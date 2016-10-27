@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.net.NetworkInfo;
 import android.net.wifi.ScanResult;
@@ -25,6 +26,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,6 +36,9 @@ import com.felkertech.ussenterprise.model.EnterpriseWifiConnection;
 import com.felkertech.ussenterprise.model.SavedWifiDatabase;
 import com.felkertech.ussenterprise.ui.EapSpinnerAdapter;
 import com.felkertech.ussenterprise.ui.Phase2SpinnerAdapter;
+
+import net.glxn.qrgen.android.QRCode;
+import net.glxn.qrgen.core.scheme.Wifi;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -283,6 +288,19 @@ public class MainActivity extends Activity {
                 } catch (IllegalArgumentException e) {
                     Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        findViewById(R.id.button_qr).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String wifiData = "WIFI:S:ssid;U:username;P:password;E:PEAP;PH:MS-CHAPv2;;";
+                Bitmap b = QRCode.from(wifiData).bitmap();
+                ImageView imageView = new ImageView(MainActivity.this);
+                imageView.setImageBitmap(b);
+                new AlertDialog.Builder(MainActivity.this)
+                        .setView(imageView)
+                        .show();
             }
         });
         printSavedWifiNetworks();

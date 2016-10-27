@@ -90,6 +90,13 @@
             android:id="@+id/button_connect"
             android:text="Connect"
             android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_below="@id/phase2"
+            android:layout_toRightOf="@id/button_connect"
+            android:id="@+id/button_qr"
+            android:text="QR Code"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
