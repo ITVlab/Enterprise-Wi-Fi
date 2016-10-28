@@ -21,8 +21,10 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -294,11 +296,16 @@ public class MainActivity extends Activity {
         findViewById(R.id.button_qr).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String wifiData = "WIFI:S:ssid;U:username;P:password;E:PEAP;PH:MS-CHAPv2;;";
-                Bitmap b = QRCode.from(wifiData).bitmap();
+                ssid = ((EditText) findViewById(R.id.ssid_edit)).getText().toString();
+                userName = ((EditText) findViewById(R.id.identity)).getText().toString();
+                passWord = ((EditText) findViewById(R.id.password)).getText().toString();
+                String wifiData = "WIFI:S:" + ssid + ";U:"+ userName + ";P:" + passWord + ";E:" +
+                        eap[0] + ";PH:" + phase2[0] + ";;";
+                Bitmap b = QRCode.from(wifiData).withSize(640, 640).bitmap();
                 ImageView imageView = new ImageView(MainActivity.this);
                 imageView.setImageBitmap(b);
-                new AlertDialog.Builder(MainActivity.this)
+                new AlertDialog.Builder(new ContextThemeWrapper(MainActivity.this,
+                            R.style.MyDialogTheme))
                         .setView(imageView)
                         .show();
             }
@@ -336,9 +343,11 @@ public class MainActivity extends Activity {
         final WifiManager wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
         List<WifiConfiguration> list = wifiManager.getConfiguredNetworks();
-        for (WifiConfiguration i : list) {
-            Log.d(TAG, "Found wifi " + i.SSID);
-            Wifid(i.SSID);
+        if (list != null) {
+            for (WifiConfiguration i : list) {
+                Log.d(TAG, "Found wifi " + i.SSID);
+                Wifid(i.SSID);
+            }
         }
     }
 
