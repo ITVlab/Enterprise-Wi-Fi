@@ -13,6 +13,7 @@
     <LinearLayout
         android:layout_height="match_parent"
         android:layout_width="400dp"
+        android:id="@+id/log_layout"
         android:paddingStart="32dp"
         android:layout_alignParentEnd="true"
         android:orientation="vertical">
@@ -41,7 +42,7 @@
         android:layout_width="match_parent"
         android:id="@+id/controls"
         android:orientation="vertical"
-        android:layout_toStartOf="@id/information_panel"
+        android:layout_toStartOf="@id/log_layout"
         android:layout_height="match_parent">
         <Button
             android:layout_width="wrap_content"

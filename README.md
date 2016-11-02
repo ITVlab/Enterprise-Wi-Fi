@@ -1,5 +1,7 @@
 ## Quick Links
-[Download on Google Play (Coming Soon)]()
+<img src='https://github.com/ITVlab/Enterprise-Wi-Fi/blob/master/promo/banner.png?raw=true' />
+
+[Download on Google Play](https://play.google.com/store/apps/details?id=com.felkertech.ussenterprise)
 
 # Enterprise Wi-Fi
 Android TV does not by default have a user interface for setting up Enterprise Wi-Fi networks. These networks, use the [Extensible Authentication Protocol (EAP)](https://en.wikipedia.org/wiki/Extensible_Authentication_Protocol), a framework for authenticating your device with the Wi-Fi network by providing both a username and password.
@@ -15,3 +17,7 @@ There is another app that fulfills this need on Android TV, although I have foun
 * Automatically fills in fields where possible
 * Shows logs of connection status to show you progress is happening
 * Can display a QR code of the network to connect your other devies
+
+<img src='https://github.com/ITVlab/Enterprise-Wi-Fi/blob/master/promo/device-2016-09-07-012808.png?raw=true' />
+
+<img src='https://github.com/ITVlab/Enterprise-Wi-Fi/blob/master/promo/device-2016-09-07-012756.png?raw=true' />
