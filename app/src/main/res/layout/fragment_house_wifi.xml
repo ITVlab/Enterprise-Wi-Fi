@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.felkertech.ussenterprise.activities.MainActivity">
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="400dp"
+        android:id="@+id/log_layout"
+        android:paddingStart="32dp"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="360dp"
+            android:id="@+id/qr_image"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="40dp"
+            android:layout_height="360dp" />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/controls"
+        android:orientation="vertical"
+        android:layout_toStartOf="@id/log_layout"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/ssid_layout"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_width="wrap_content"
+                android:id="@+id/ssid_list"
+                android:text="Choose from list"
+                android:layout_height="wrap_content" />
+            <EditText
+                style="@style/input_text"
+                android:id="@+id/ssid_edit"
+                android:hint="Custom SSID" />
+        </LinearLayout>
+        <EditText
+            android:hint="Password"
+            android:id="@+id/password"
+            android:layout_below="@id/ssid_layout"
+            android:inputType="textPassword"
+            android:nextFocusDown="@+id/eap"
+            style="@style/input_text" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_below="@id/password"
+            android:layout_toRightOf="@id/button_connect"
+            android:id="@+id/button_qr"
+            android:visibility="invisible"
+            android:text="QR Code"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_below="@id/button_qr"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Known Wi-Fi Networks"
+                android:textSize="18sp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/wifi_list"
+                android:layout_marginTop="16dp"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
