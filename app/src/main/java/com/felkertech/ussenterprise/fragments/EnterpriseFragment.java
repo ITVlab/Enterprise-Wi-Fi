@@ -399,11 +399,19 @@ public class EnterpriseFragment extends Fragment {
     }
 
     private void Logd(String log) {
+        if (getView() == null) {
+            Toast.makeText(getContext(), log, Toast.LENGTH_SHORT).show();
+            return;
+        }
         TextView logView = ((TextView) getView().findViewById(R.id.logs));
         logView.setText(log + "\n\n" + logView.getText());
     }
 
     private void Wifid(String log) {
+        if (getView() == null) {
+            Toast.makeText(getContext(), log, Toast.LENGTH_SHORT).show();
+            return;
+        }
         TextView logView = ((TextView) getView().findViewById(R.id.wifi_list));
         logView.setText(log + "          " + logView.getText());
     }
