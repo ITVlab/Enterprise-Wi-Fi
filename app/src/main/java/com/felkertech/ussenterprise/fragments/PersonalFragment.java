@@ -154,6 +154,10 @@ public class PersonalFragment extends Fragment {
     }
 
     private void Wifid(String log) {
+       if (getView() == null) { // handle if there is no list
+            Toast.makeText(getContext(), log, Toast.LENGTH_SHORT).show();
+            return;
+        }
         TextView logView = ((TextView) getView().findViewById(R.id.wifi_list));
         logView.setText(log + "          " + logView.getText());
     }
